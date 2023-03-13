@@ -10,16 +10,16 @@ export function createContext(userOptions){
         include = null,
         exclude = null,
         progress = true,
-        s3Options = {},
-        s3UploadOptions = {}
+        clientConfig = {},
+        uploadOptions = {}
     } = userOptions
 
     basePath = basePath ? addTrailingS3Sep(basePath) : ''
 
     return {
-        uploadOptions: s3UploadOptions,
-        clientOptions: {
-            ...s3Options,
+        uploadOptions,
+        clientConfig: {
+            ...clientConfig,
             maxAsyncS3: 50 
         },
         basePath: basePath,

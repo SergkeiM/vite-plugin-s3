@@ -19,7 +19,7 @@ export default class Uploader {
 
         this.ctx = ctx
 
-        this.client = new S3(ctx.clientOptions)
+        this.client = new S3(ctx.clientConfig)
 
         this.directory = ctx.directory ? ctx.directory : `${ctx.vite.root}/${ctx.vite.build.outDir}`;
     }
