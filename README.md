@@ -1,5 +1,5 @@
 
-vite-plugin-s3
+vite-plugin-s3-storage
 ===
 [![Travis Badge](https://api.travis-ci.org/Froxz/vite-plugin-s3.svg?branch=master)](https://travis-ci.org/Froxz/vite-plugin-s3)
 
@@ -11,7 +11,7 @@ This plugin will upload all built assets to s3 uses `@aws-sdk/client-s3` **v3**
 ### Install Instructions
 
 ```bash
-$ npm i vite-plugin-s3
+$ npm i vite-plugin-s3-storage
 ```
 
 ### Options
@@ -30,7 +30,7 @@ $ npm i vite-plugin-s3
 
 ```javascript
 import { defineConfig } from 'vite'
-import S3Plugin from 'vite-plugin-s3'
+import S3Plugin from 'vite-plugin-s3-storage'
 
 export default defineConfig({
     plugins: [

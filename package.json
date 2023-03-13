@@ -1,5 +1,5 @@
 {
-    "name": "vite-plugin-s3",
+    "name": "vite-plugin-s3-storage",
     "version": "0.0.1",
     "description": "Upload all build assets to S3",
     "type": "module",
