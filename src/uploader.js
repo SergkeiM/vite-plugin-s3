@@ -1,11 +1,10 @@
 import fs from 'fs'
-import { S3 } from 'aws-sdk'
+import { S3 } from '@aws-sdk/client-s3'
 import ProgressBar from 'progress'
 import mime from 'mime/lite'
 
 import mapValues from 'lodash/mapValues'
 import isFunction from 'lodash/isFunction'
-import merge from 'lodash/merge'
 
 import {
     addSeperatorToPath,
@@ -22,75 +21,48 @@ export default class Uploader {
 
         this.client = new S3(ctx.clientOptions)
 
-        this.directory = ctx.directory ? ctx.directory :  `${ctx.vite.root}/${ctx.vite.outDir}`;
+        this.directory = ctx.directory ? ctx.directory : `${ctx.vite.root}/${ctx.vite.build.outDir}`;
     }
 
-    transformBasePath() {
-        return Promise.resolve(this.ctx.basePathTransform(this.ctx.basePath))
-            .then(addTrailingS3Sep)
-            .then(nPath => (this.ctx.basePath = nPath))
-    }
-
-    setupProgressBar(uploadFiles) {
-
-        const progressTotal = uploadFiles.reduce((acc, {upload}) => upload.totalBytes + acc, 0)
-    
-        const progressBar = new ProgressBar('Uploading [:bar] :percent :etas', {
-            complete: '>',
-            incomplete: '∆',
-            total: progressTotal,
-        })
-    
-        var progressValue = 0
-    
-        uploadFiles.forEach(({upload}) => {
-            upload.on('httpUploadProgress', ({loaded}) => {
-                progressValue += loaded
-    
-                progressBar.update(progressValue / progressTotal)
-            })
-        })
-    }
-
-    uploadFile(fileName, file){
+    uploadFile(fileName, file, cb){
 
         let Key = this.ctx.basePath + fileName
     
-        const s3Params = mapValues(this.ctx.upload, (optionConfig) => {
+        const params = mapValues(this.ctx.uploadOptions, (optionConfig) => {
             return isFunction(optionConfig) ? optionConfig(fileName, file) : optionConfig
         })
-    
-        // avoid noname folders in bucket
+
         if (Key[0] === '/') Key = Key.substr(1)
     
-        if (s3Params.ContentType === undefined){
-            s3Params.ContentType = mime.getType(fileName)
+        if (params.ContentType === undefined){
+            params.ContentType = mime.getType(fileName)
         }
         
         const Body = fs.createReadStream(file)
 
-        const upload = this.client.upload(
-            merge({Key, Body}, DEFAULT_UPLOAD_OPTIONS, s3Params)
-        )
-    
-        return { 
-            upload,
-            promise: upload.promise()
-        }
+        return this.client.putObject({
+            Key,
+            Body,
+            ...DEFAULT_UPLOAD_OPTIONS,
+            ...params
+        }, cb)
     }
 
-    async uploadFiles() {
+    async uploadFiles(files) {
 
-        await this.transformBasePath()
+        const bar = new ProgressBar('Uploading files to S3 [:bar] :current/:total', {
+            complete: '>',
+            incomplete: '∆',
+            total: files.length
+        })
 
-        const uploadFiles = files.map((file) => uploadFile(file.name, file.path))
+        const uploadFiles = files.map((file) => this.uploadFile(file.name, file.path, (err, data) => {
+            if(!err && this.ctx.progress){
+                bar.tick()
+            }
+        }))
 
-        if (this.ctx.progress) {
-
-            this.setupProgressBar(uploadFiles)
-        }
-
-        return await Promise.all(uploadFiles.map(({ promise }) => promise))
+        return await Promise.all(uploadFiles)
     }
 
     isIgnoredFile(file) {

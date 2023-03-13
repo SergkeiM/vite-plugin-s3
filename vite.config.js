@@ -13,7 +13,7 @@ export default defineConfig({
         cssCodeSplit: true,
         lib: {
             entry: "src/main.js",
-            name: 'S3VitePlugin',
+            name: 'VitePluginS3',
             fileName: 'main',
             formats: ["es", "cjs"]
         },

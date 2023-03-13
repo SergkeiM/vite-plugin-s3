@@ -1,17 +1,15 @@
 import {
-    addTrailingS3Sep,
-    DEFAULT_TRANSFORM
+    addTrailingS3Sep
 } from './helpers'
 
 export function createContext(userOptions){
 
     let {
-        basePath = "",
+        basePath = '',
         directory = null,
         include = null,
         exclude = null,
         progress = true,
-        basePathTransform = DEFAULT_TRANSFORM,
         s3Options = {},
         s3UploadOptions = {}
     } = userOptions
@@ -19,13 +17,12 @@ export function createContext(userOptions){
     basePath = basePath ? addTrailingS3Sep(basePath) : ''
 
     return {
-        basePathTransform: basePathTransform,
         uploadOptions: s3UploadOptions,
         clientOptions: {
             ...s3Options,
             maxAsyncS3: 50 
         },
-        basePath: path,
+        basePath: basePath,
         directory: directory,
         include: include,
         exclude: exclude,

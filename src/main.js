@@ -6,13 +6,13 @@ const S3Plugin = (enabled = false, options = {}) => {
     const ctx = createContext(options)
 
     return {
-        name: 's3-vite-plugin',
+        name: 'vite-plugin-s3',
         enforce: 'post',
         apply(config, { command }) {
             return command === 'build' && enabled;
         },
         configResolved (config) {
-            ctx.config = config
+            ctx.vite = config
         },
         closeBundle: {
             async handler() {

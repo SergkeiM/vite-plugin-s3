@@ -12,8 +12,6 @@ export const UPLOAD_IGNORES = [
     '.DS_Store'
 ]
 
-export const DEFAULT_TRANSFORM = (item) => Promise.resolve(item)
-
 export const addTrailingS3Sep = (fPath) => fPath ? fPath.replace(/\/?(\?|#|$)/, '/$1') : fPath
 
 export const addSeperatorToPath = (fPath) => {
