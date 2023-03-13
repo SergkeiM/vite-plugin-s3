@@ -21,7 +21,7 @@ export default defineConfig({
             input: {
                 main: fileURLToPath(new URL('src/main.js', import.meta.url))
             },
-            external: ['aws-sdk', 'progress', 'recursive-readdir', 'mime/lite'],
+            external: ['@aws-sdk/client-s3', 'progress', 'recursive-readdir', 'mime/lite'],
             output: {
                 exports: "named"
             }

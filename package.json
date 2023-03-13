@@ -1,13 +1,12 @@
 {
-    "name": "s3-vite-plugin",
+    "name": "@froxz/vite-plugin-s3",
     "version": "0.0.1",
     "description": "Upload all build assets to S3",
     "type": "module",
     "keywords": [
         "vite",
         "s3",
-        "vite-plugin",
-        "s3-vite-plugin"
+        "vite-plugin"
     ],
     "files": [
         "dist"
@@ -33,7 +32,7 @@
     },
     "homepage": "https://github.com/Froxz/s3-vite-plugin",
     "dependencies": {
-        "aws-sdk": "^2.1333.0",
+        "@aws-sdk/client-s3": "^3.0.0",
         "mime": "^3.0.0",
         "progress": "^2.0.3",
         "recursive-readdir": "^2.2.3"
