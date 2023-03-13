@@ -1,6 +1,6 @@
 {
     "name": "s3-vite-plugin",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Upload all build assets to S3",
     "type": "module",
     "keywords": [
