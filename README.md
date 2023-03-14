@@ -1,5 +1,5 @@
 
-vite-plugin-s3-storage
+vite-plugin-s3
 ===
 [![Travis Badge](https://api.travis-ci.org/Froxz/vite-plugin-s3.svg?branch=master)](https://travis-ci.org/Froxz/vite-plugin-s3)
 
