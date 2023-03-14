@@ -1,6 +1,6 @@
 {
     "name": "@froxz/vite-plugin-s3",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Upload all build assets to S3",
     "type": "module",
     "keywords": [
