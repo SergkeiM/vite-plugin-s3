@@ -11,7 +11,7 @@ This plugin will upload all built assets to s3 uses `@aws-sdk/client-s3` **v3**
 ### Install Instructions
 
 ```bash
-$ npm i vite-plugin-s3-storage
+$ npm i @froxz/vite-plugin-s3
 ```
 
 ### Options
@@ -30,7 +30,7 @@ $ npm i vite-plugin-s3-storage
 
 ```javascript
 import { defineConfig } from 'vite'
-import S3Plugin from 'vite-plugin-s3-storage'
+import S3Plugin from '@froxz/vite-plugin-s3'
 
 export default defineConfig({
     plugins: [
