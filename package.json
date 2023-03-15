@@ -38,6 +38,7 @@
         "recursive-readdir": "^2.2.3"
     },
     "devDependencies": {
+        "kolorist": "^1.7.0",
         "lodash": "^4.17.21",
         "vite": "^4.0.0",
         "vite-plugin-target": "^0.1.1"

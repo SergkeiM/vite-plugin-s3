@@ -5,6 +5,8 @@ import { lookup } from 'mime-types'
 import mapValues from 'lodash/mapValues'
 import isFunction from 'lodash/isFunction'
 
+import { logResult } from './log'
+
 import {
     addSeperatorToPath,
     getDirectoryFilesRecursive,
@@ -86,7 +88,9 @@ export default class Uploader {
 
         const files = this.filterAllowedFiles(allFiles)
 
-        return await this.uploadFiles(files)
+        await this.uploadFiles(files)
+
+        logResult(files, this.ctx.vite)
 
     }
 }
