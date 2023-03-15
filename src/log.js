@@ -13,8 +13,8 @@ export function logResult(files, viteOptions) {
         console.info([
         '',
         `${cyan(`S3Plugin v${version}`)}`,
-        'files uploaded',
-        ...files.map(p => `  ${dim(relative(root, p.path))}`),
+        `✓ ${files.length} files uploaded`,
+        ...files.map(p => `${dim(relative(root, p.path))}`),
         ].join('\n'))
     }
 }

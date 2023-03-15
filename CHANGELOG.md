@@ -6,6 +6,9 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Changed
+- Log output format
+
 ## 1.1.1 - 2023-03-15
 ### Added
 - Added log output
