@@ -1,7 +1,7 @@
 {
     "name": "@froxz/vite-plugin-s3",
     "version": "1.0.2",
-    "description": "Upload all build assets to S3",
+    "description": "Allows you to upload files to S3",
     "type": "module",
     "keywords": [
         "vite",
@@ -24,13 +24,13 @@
         "build": "vite build",
         "preview": "vite preview"
     },
-    "repository": "https://github.com/Froxz/s3-vite-plugin",
+    "repository": "https://github.com/Froxz/vite-plugin-s3",
     "author": "Froxz(sergio11of@gmail.com)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Froxz/s3-vite-plugin/issues"
+        "url": "https://github.com/Froxz/vite-plugin-s3/issues"
     },
-    "homepage": "https://github.com/Froxz/s3-vite-plugin",
+    "homepage": "https://github.com/Froxz/vite-plugin-s3",
     "dependencies": {
         "@aws-sdk/client-s3": "^3.0.0",
         "mime": "^3.0.0",

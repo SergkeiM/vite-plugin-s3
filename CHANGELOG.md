@@ -6,6 +6,12 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Changed
+- `package.json` Git repository URL
+- `package.json` Bugs Url
+- `package.json` Description
+- `package.json` Home Page URL
+
 ## 1.0.2 - 2023-03-14
 
 ## 1.0.1 - 2023-03-14
