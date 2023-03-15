@@ -2,6 +2,7 @@
 @froxz/vite-plugin-s3
 ===
 [![Travis Badge](https://api.travis-ci.org/Froxz/vite-plugin-s3.svg?branch=master)](https://travis-ci.org/Froxz/vite-plugin-s3)
+[![Verified on Openbase](https://badges.openbase.com/js/verified/@froxz/vite-plugin-s3.svg?token=+2YA8n/SOL3DiSFWWLusfYyOwyXAeNo24ynF9UtjTPY=)](https://openbase.com/js/@froxz/vite-plugin-s3?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 This package was heavily inspired by [webpack-s3-plugin](https://www.npmjs.com/package/webpack-s3-plugin)
 
