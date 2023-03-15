@@ -21,7 +21,6 @@ $ npm i @froxz/vite-plugin-s3
 - `uploadOptions`: Provide upload options [PutObjectRequest](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectrequest.html)
 - `basePath`: Provide the namespace of uploaded files on S3
 - `directory`: Provide a directory to upload (if not supplied, will upload files from [build.outDir](https://vitejs.dev/config/build-options.html#build-outdir))
-- `progress`: Enable progress bar (defaults true)
 
 ### Usage Instructions
 
@@ -50,3 +49,7 @@ export default defineConfig({
     ]
 })
 ```
+
+### License
+
+[MIT](LICENSE)

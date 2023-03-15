@@ -9,7 +9,6 @@ export function createContext(userOptions){
         directory = null,
         include = null,
         exclude = null,
-        progress = true,
         clientConfig = {},
         uploadOptions = {}
     } = userOptions
@@ -26,7 +25,6 @@ export function createContext(userOptions){
         directory: directory,
         include: include,
         exclude: exclude,
-        progress: progress,
         vite: undefined
     }
 }

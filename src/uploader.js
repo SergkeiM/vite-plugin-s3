@@ -1,7 +1,6 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import { S3 } from '@aws-sdk/client-s3'
-import ProgressBar from 'progress'
-import mime from 'mime/lite'
+import { lookup } from 'mime-types'
 
 import mapValues from 'lodash/mapValues'
 import isFunction from 'lodash/isFunction'
@@ -24,7 +23,7 @@ export default class Uploader {
         this.directory = ctx.directory ? ctx.directory : `${ctx.vite.root}/${ctx.vite.build.outDir}`;
     }
 
-    uploadFile(fileName, file, cb){
+    uploadFile(fileName, file){
 
         let Key = this.ctx.basePath + fileName
     
@@ -35,7 +34,7 @@ export default class Uploader {
         if (Key[0] === '/') Key = Key.substr(1)
     
         if (params.ContentType === undefined){
-            params.ContentType = mime.getType(fileName)
+            params.ContentType = lookup(fileName) || 'application/octet-stream'
         }
         
         const Body = fs.createReadStream(file)
@@ -45,22 +44,12 @@ export default class Uploader {
             Body,
             ...DEFAULT_UPLOAD_OPTIONS,
             ...params
-        }, cb)
+        })
     }
 
     async uploadFiles(files) {
 
-        const bar = new ProgressBar('Uploading files to S3 [:bar] :current/:total', {
-            complete: '>',
-            incomplete: '∆',
-            total: files.length
-        })
-
-        const uploadFiles = files.map((file) => this.uploadFile(file.name, file.path, (err, data) => {
-            if(!err && this.ctx.progress){
-                bar.tick()
-            }
-        }))
+        const uploadFiles = files.map((file) => this.uploadFile(file.name, file.path))
 
         return await Promise.all(uploadFiles)
     }

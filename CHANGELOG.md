@@ -6,6 +6,15 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- License link to README.MD
+
+### Changed
+- Migrated from `mime` to `mime-types`
+
+### Removed
+- Removed Progress
+
 ## 1.0.4 - 2023-03-15
 ### Changed
 - `README.md` Title

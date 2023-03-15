@@ -33,13 +33,13 @@
     "homepage": "https://github.com/Froxz/vite-plugin-s3",
     "dependencies": {
         "@aws-sdk/client-s3": "^3.0.0",
-        "mime": "^3.0.0",
+        "mime-types": "^2.1.35",
         "progress": "^2.0.3",
         "recursive-readdir": "^2.2.3"
     },
     "devDependencies": {
-        "vite": "^4.0.0",
         "lodash": "^4.17.21",
+        "vite": "^4.0.0",
         "vite-plugin-target": "^0.1.1"
     }
 }
