@@ -1,12 +1,11 @@
 
-vite-plugin-s3
+@froxz/vite-plugin-s3
 ===
 [![Travis Badge](https://api.travis-ci.org/Froxz/vite-plugin-s3.svg?branch=master)](https://travis-ci.org/Froxz/vite-plugin-s3)
 
 This package was heavily inspired by [webpack-s3-plugin](https://www.npmjs.com/package/webpack-s3-plugin)
 
-This plugin will upload all built assets to s3 uses `@aws-sdk/client-s3` **v3**
-
+Allows you to upload files to S3 `@aws-sdk/client-s3` **v3**
 
 ### Install Instructions
 
@@ -26,7 +25,7 @@ $ npm i @froxz/vite-plugin-s3
 
 ### Usage Instructions
 
-> s3UploadOptions default to `ACL: 'public-read'` so you may need to override if you have other needs.
+> `uploadOptions` default to `ACL: 'public-read'` so you may need to override if you have other needs.
 
 ```javascript
 import { defineConfig } from 'vite'
@@ -41,7 +40,7 @@ export default defineConfig({
                     accessKeyId: '',
                     secretAccessKey: '',
                 },
-                region: ''
+                region: 'eu-west-2'
             },
             uploadOptions: {
                 Bucket: ''
