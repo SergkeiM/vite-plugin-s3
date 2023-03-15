@@ -6,6 +6,7 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## 1.0.4 - 2023-03-15
 ### Changed
 - `README.md` Title
 
