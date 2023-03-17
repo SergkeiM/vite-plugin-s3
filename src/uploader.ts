@@ -6,7 +6,7 @@ import { S3 } from '@aws-sdk/client-s3'
 import { lookup } from 'mime-types'
 
 import mapValues from 'lodash/mapValues'
-import type { PutObjectRequest, File, Options } from './types'
+import type { File, Options } from './types'
 
 import { logResult } from './log'
 
