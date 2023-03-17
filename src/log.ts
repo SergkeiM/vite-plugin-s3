@@ -16,7 +16,7 @@ export function logResult(files: File[], vite: ResolvedConfig) {
   if (logLevel === 'info') {
     console.info([
       '',
-    `${cyan(`S3Plugin v${version}`)}`,
+    `${cyan(`ViteS3 v${version}`)}`,
     `✓ ${files.length} files uploaded`,
     ...files.map((p: File) => `${dim(relative(root, p.path))}`),
     ].join('\n'))
