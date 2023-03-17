@@ -6,8 +6,7 @@ import { S3 } from '@aws-sdk/client-s3'
 import { lookup } from 'mime-types'
 
 import mapValues from 'lodash/mapValues'
-import isFunction from 'lodash/isFunction'
-import type { File, Options } from './types'
+import type { PutObjectRequest, File, Options } from './types'
 
 import { logResult } from './log'
 
@@ -37,8 +36,8 @@ export default class Uploader {
   uploadFile(fileName: string, file: string): Promise<PutObjectCommandOutput> {
     let Key = this.options.basePath + fileName
 
-    const params = mapValues(this.options.uploadOptions, (optionConfig) => {
-      return isFunction(optionConfig) ? optionConfig(fileName, file) : optionConfig
+    const params = mapValues(this.options.uploadOptions, (optionConfig: any) => {
+      return typeof optionConfig === 'function' ? optionConfig(fileName, file) : optionConfig
     })
 
     if (Key[0] === '/')

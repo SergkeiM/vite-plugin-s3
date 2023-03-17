@@ -1,6 +1,5 @@
 {
   "name": "@froxz/vite-plugin-s3",
-  "type": "module",
   "version": "1.2.1",
   "description": "Allows you to upload files to AWS S3 or any other S3 compatible provider",
   "author": "Froxz(sergio11of@gmail.com)",
@@ -42,8 +41,8 @@
   "scripts": {
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "dev": "npx tsup src/index.ts --watch --ignore-watch dist",
-    "build": "npx tsup src/index.ts --dts --format cjs,esm"
+    "dev": "esno scripts/dev.ts",
+    "build": "esno scripts/build.ts"
   },
   "peerDependencies": {
     "vite": "^3.1.0 || ^4.0.0"
@@ -60,6 +59,7 @@
     "@types/node": "^18.15.3",
     "@types/recursive-readdir": "^2.2.1",
     "eslint": "^8.36.0",
+    "esno": "^0.16.3",
     "kolorist": "^1.7.0",
     "lodash": "^4.17.21",
     "tsup": "^6.6.3",

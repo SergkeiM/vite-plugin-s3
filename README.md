@@ -32,22 +32,22 @@ import { defineConfig } from 'vite'
 import { S3Plugin } from '@froxz/vite-plugin-s3'
 
 export default defineConfig({
-    plugins: [
-        S3Plugin(true, {
-            basePath: '/build',
-            clientConfig: {
-                credentials: {
-                    accessKeyId: '',
-                    secretAccessKey: '',
-                },
-                region: 'eu-west-2'
-            },
-            uploadOptions: {
-                Bucket: ''
-            }
-            
-        })
-    ]
+  plugins: [
+    S3Plugin(true, {
+      basePath: '/build',
+      clientConfig: {
+        credentials: {
+          accessKeyId: '',
+          secretAccessKey: '',
+        },
+        region: 'eu-west-2'
+      },
+      uploadOptions: {
+        Bucket: ''
+      }
+
+    })
+  ]
 })
 ```
 
