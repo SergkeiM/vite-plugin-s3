@@ -6,6 +6,7 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## 1.2.4 - 2023-03-17
 ### Changed
 - Export name (kept previous to avoid BC)
 
