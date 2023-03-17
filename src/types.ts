@@ -1,6 +1,6 @@
-import type { PutObjectRequest, S3ClientConfig } from '@aws-sdk/client-s3'
+import type { PutObjectRequest as PutObject, S3ClientConfig } from '@aws-sdk/client-s3'
 
-declare type PutObject = Omit<PutObjectRequest, 'Body' | 'Key'> & {}
+declare type PutObjectRequest = Omit<PutObject, 'Body' | 'Key'>
 
 /**
  * Plugin options.
@@ -25,7 +25,7 @@ export interface Options {
   /**
    * Provide upload options PutObjectRequest
    */
-  uploadOptions: PutObject
+  uploadOptions: PutObjectRequest
   /**
    * By default: `build.outDir`.
    */
@@ -39,3 +39,5 @@ export interface File {
   path: string
   name: string
 }
+
+export { S3ClientConfig, PutObjectRequest }
