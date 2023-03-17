@@ -19,19 +19,23 @@ import {
 } from './helpers'
 
 export default class Uploader {
+    options: S3Options
+    vite?: ResolvedConfig
+    client: Client
+    directory: string
 
     constructor(ctx: Context) {
 
-        this.options: S3Options = ctx.options
+        this.options = ctx.options
 
-        this.vite: ResolvedConfig = ctx.vite
+        this.vite = ctx.vite
 
-        this.client: Client = new S3(this.options.clientConfig)
+        this.client = new S3(this.options.clientConfig)
 
-        this.directory = this.options.directory ? this.options.directory : `${this.vite.root}/${this.vite.build.outDir}`;
+        this.directory = this.options.directory ? this.options.directory : `${this.vite?.root}/${this.vite?.build.outDir}`;
     }
 
-    uploadFile(fileName, file){
+    uploadFile(fileName: string, file){
 
         let Key = this.options.basePath + fileName
     
@@ -55,7 +59,7 @@ export default class Uploader {
         })
     }
 
-    async uploadFiles(files) {
+    async uploadFiles(files: object[]) {
 
         const uploadFiles = files.map((file) => this.uploadFile(file.name, file.path))
 
