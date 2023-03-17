@@ -1,34 +1,32 @@
+import type { ConfigEnv, Plugin, ResolvedConfig, UserConfig } from 'vite'
 import { createContext } from './context'
 import Uploader from './uploader'
 
-import type { Plugin, ResolvedConfig, UserConfig } from 'vite'
-import type { S3Options, Context } from './types'
+import type { Options } from './types'
 
-export function S3Plugin(enabled: boolean, options: S3Options): Plugin {
+export function S3Plugin(enabled: boolean, userOptions: Options): Plugin {
+  const options: Options = createContext(userOptions)
+  let vite: ResolvedConfig
 
-    const ctx: Context = createContext(options)
+  return {
+    name: 'vite-plugin-s3',
+    enforce: 'post',
+    apply(config: UserConfig, { command }: ConfigEnv) {
+      return command === 'build' && enabled
+    },
+    configResolved(config: ResolvedConfig) {
+      vite = config
+    },
+    closeBundle: {
+      async handler() {
+        if (!vite.build.ssr && enabled) {
+          const uploader = new Uploader(options, vite)
 
-    return {
-        name: 'vite-plugin-s3',
-        enforce: 'post',
-        apply(config: UserConfig, { command }) {
-            return command === 'build' && enabled;
-        },
-        configResolved (config: ResolvedConfig) {
-            ctx.vite = config
-        },
-        closeBundle: {
-            async handler() {
-                if (!ctx.vite?.build.ssr && enabled){
-
-                    const uploader = new Uploader(ctx)
-
-                    await uploader.apply()
-                }    
-            }
+          await uploader.apply()
         }
-    }
+      },
+    },
+  }
 }
 
-export type { S3Options as Options }
-export default S3Plugin
+export type { Options }

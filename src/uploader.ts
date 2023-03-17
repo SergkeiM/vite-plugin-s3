@@ -1,106 +1,100 @@
-import type { S3Options, Context } from './types'
-import type { ResolvedConfig } from 'vite'
-import type { Client } from "@aws-sdk/client-s3"
-
 import fs from 'node:fs'
+import type { ResolvedConfig } from 'vite'
+import type { PutObjectCommandOutput } from '@aws-sdk/client-s3'
+
 import { S3 } from '@aws-sdk/client-s3'
 import { lookup } from 'mime-types'
 
 import mapValues from 'lodash/mapValues'
 import isFunction from 'lodash/isFunction'
+import type { File, Options } from './types'
 
 import { logResult } from './log'
 
 import {
-    addSeperatorToPath,
-    getDirectoryFilesRecursive,
-    UPLOAD_IGNORES,
-    DEFAULT_UPLOAD_OPTIONS
+  DEFAULT_UPLOAD_OPTIONS,
+  UPLOAD_IGNORES,
+  addSeperatorToPath,
+  getDirectoryFilesRecursive,
 } from './helpers'
 
 export default class Uploader {
-    options: S3Options
-    vite?: ResolvedConfig
-    client: Client
-    directory: string
+  options: Options
+  vite: ResolvedConfig
+  client: S3
+  directory: string
 
-    constructor(ctx: Context) {
+  constructor(options: Options, vite: ResolvedConfig) {
+    this.options = options
 
-        this.options = ctx.options
+    this.vite = vite
 
-        this.vite = ctx.vite
+    this.client = new S3(this.options.clientConfig)
 
-        this.client = new S3(this.options.clientConfig)
+    this.directory = this.options.directory ? this.options.directory : `${this.vite.root}/${this.vite.build.outDir}`
+  }
 
-        this.directory = this.options.directory ? this.options.directory : `${this.vite?.root}/${this.vite?.build.outDir}`;
-    }
+  uploadFile(fileName: string, file: string): Promise<PutObjectCommandOutput> {
+    let Key = this.options.basePath + fileName
 
-    uploadFile(fileName: string, file){
+    const params = mapValues(this.options.uploadOptions, (optionConfig) => {
+      return isFunction(optionConfig) ? optionConfig(fileName, file) : optionConfig
+    })
 
-        let Key = this.options.basePath + fileName
-    
-        const params = mapValues(this.options.uploadOptions, (optionConfig) => {
-            return isFunction(optionConfig) ? optionConfig(fileName, file) : optionConfig
-        })
+    if (Key[0] === '/')
+      Key = Key.substr(1)
 
-        if (Key[0] === '/') Key = Key.substr(1)
-    
-        if (params.ContentType === undefined){
-            params.ContentType = lookup(fileName) || 'application/octet-stream'
-        }
-        
-        const Body = fs.createReadStream(file)
+    if (params.ContentType === undefined)
+      params.ContentType = lookup(fileName) || 'application/octet-stream'
 
-        return this.client.putObject({
-            Key,
-            Body,
-            ...DEFAULT_UPLOAD_OPTIONS,
-            ...params
-        })
-    }
+    const Body = fs.createReadStream(file)
 
-    async uploadFiles(files: object[]) {
+    return this.client.putObject({
+      Key,
+      Body,
+      ...DEFAULT_UPLOAD_OPTIONS,
+      ...params,
+    })
+  }
 
-        const uploadFiles = files.map((file) => this.uploadFile(file.name, file.path))
+  async uploadFiles(files: File[]): Promise<PutObjectCommandOutput[]> {
+    const uploadFiles = files.map((file: File) => this.uploadFile(file.name, file.path))
 
-        return await Promise.all(uploadFiles)
-    }
+    return await Promise.all(uploadFiles)
+  }
 
-    isIgnoredFile(file) {
-        return UPLOAD_IGNORES.some((ignore) => new RegExp(ignore).test(file))
-    }
-    
-    isIncludeAndNotExclude(file) {
-        
-        const { include, exclude} = this.options
-    
-        const isInclude = include ? new RegExp(include).test(file) : true
-        const isExclude = exclude ? new RegExp(exclude).test(file) : false
-    
-        return isInclude && !isExclude
-    }
+  isIgnoredFile(file: string): boolean {
+    return UPLOAD_IGNORES.some(ignore => new RegExp(ignore).test(file))
+  }
 
-    filterAllowedFiles(files) {
-        return files.reduce((res, file) => {
-            if (this.isIncludeAndNotExclude(file.name) && !this.isIgnoredFile(file.name))
+  isIncludeAndNotExclude(file: string): boolean {
+    const { include, exclude } = this.options
 
-            res.push(file)
+    const isInclude = include ? new RegExp(include).test(file) : true
+    const isExclude = exclude ? new RegExp(exclude).test(file) : false
 
-            return res
-        }, [])
-    }
+    return isInclude && !isExclude
+  }
 
-    async apply() {
+  filterAllowedFiles(files: File[]): File[] {
+    return files.reduce((res: File[], file: File) => {
+      if (this.isIncludeAndNotExclude(file.name) && !this.isIgnoredFile(file.name))
 
-        const dPath = addSeperatorToPath(this.directory)
+        res.push(file)
 
-        const allFiles = await getDirectoryFilesRecursive(dPath)
+      return res
+    }, [])
+  }
 
-        const files = this.filterAllowedFiles(allFiles)
+  async apply() {
+    const dPath = addSeperatorToPath(this.directory)
 
-        await this.uploadFiles(files)
+    const allFiles = await getDirectoryFilesRecursive(dPath)
 
-        logResult(files, this.vite)
+    const files = this.filterAllowedFiles(allFiles)
 
-    }
+    await this.uploadFiles(files)
+
+    logResult(files, this.vite)
+  }
 }

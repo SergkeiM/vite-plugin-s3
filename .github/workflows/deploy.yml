@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.15.1'
+          node-version: 16.15.1
           registry-url: https://registry.npmjs.org/
 
       # Configure Git
@@ -37,7 +37,7 @@ jobs:
           echo "RELEASE_TAG=latest" >> $GITHUB_ENV
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
-       # Update changelog unreleased section with new version
+        # Update changelog unreleased section with new version
       - name: Update changelog
         uses: superfaceai/release-changelog-action@v2
         with:

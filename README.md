@@ -1,6 +1,6 @@
 <p align='center'>
 <br>
-S3 compatible file uploader Plugin for Vite
+AWS S3 or any other S3 compatible provider file uploader Plugin for Vite
 </p>
 
 <p align='center'>
@@ -27,9 +27,9 @@ $ npm i @froxz/vite-plugin-s3
 
 Add `vite-plugin-s3` plugin to `vite.config.js / vite.config.ts` and configure it:
 
-```javascript
+```ts
 import { defineConfig } from 'vite'
-import S3Plugin from '@froxz/vite-plugin-s3'
+import { S3Plugin } from '@froxz/vite-plugin-s3'
 
 export default defineConfig({
     plugins: [
