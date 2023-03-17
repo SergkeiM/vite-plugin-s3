@@ -12,14 +12,14 @@ export default defineConfig({
     build: {
         cssCodeSplit: true,
         lib: {
-            entry: "src/main.js",
+            entry: "src/main.ts",
             name: 'VitePluginS3Storage',
             fileName: 'main',
             formats: ["es", "cjs"]
         },
         rollupOptions: {
             input: {
-                main: fileURLToPath(new URL('src/main.js', import.meta.url))
+                main: fileURLToPath(new URL('src/main.ts', import.meta.url))
             },
             external: ['@aws-sdk/client-s3', 'recursive-readdir', 'mime-types'],
             output: {

@@ -1,3 +1,7 @@
+import type { S3Options, Context } from './types'
+import type { ResolvedConfig } from 'vite'
+import type { Client } from "@aws-sdk/client-s3"
+
 import fs from 'node:fs'
 import { S3 } from '@aws-sdk/client-s3'
 import { lookup } from 'mime-types'
@@ -16,20 +20,22 @@ import {
 
 export default class Uploader {
 
-    constructor(ctx) {
+    constructor(ctx: Context) {
 
-        this.ctx = ctx
+        this.options: S3Options = ctx.options
 
-        this.client = new S3(ctx.clientConfig)
+        this.vite: ResolvedConfig = ctx.vite
 
-        this.directory = ctx.directory ? ctx.directory : `${ctx.vite.root}/${ctx.vite.build.outDir}`;
+        this.client: Client = new S3(this.options.clientConfig)
+
+        this.directory = this.options.directory ? this.options.directory : `${this.vite.root}/${this.vite.build.outDir}`;
     }
 
     uploadFile(fileName, file){
 
-        let Key = this.ctx.basePath + fileName
+        let Key = this.options.basePath + fileName
     
-        const params = mapValues(this.ctx.uploadOptions, (optionConfig) => {
+        const params = mapValues(this.options.uploadOptions, (optionConfig) => {
             return isFunction(optionConfig) ? optionConfig(fileName, file) : optionConfig
         })
 
@@ -62,7 +68,7 @@ export default class Uploader {
     
     isIncludeAndNotExclude(file) {
         
-        const { include, exclude} = this.ctx
+        const { include, exclude} = this.options
     
         const isInclude = include ? new RegExp(include).test(file) : true
         const isExclude = exclude ? new RegExp(exclude).test(file) : false
@@ -90,7 +96,7 @@ export default class Uploader {
 
         await this.uploadFiles(files)
 
-        logResult(files, this.ctx.vite)
+        logResult(files, this.vite)
 
     }
 }
