@@ -6,6 +6,12 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Features to docs
+
+### Changed
+- Options to table
+
 ## 1.3.0 - 2023-03-18
 ### Added
 - More options for Include/Exclude

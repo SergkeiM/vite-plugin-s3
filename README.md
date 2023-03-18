@@ -16,6 +16,11 @@ S3 compatible file uploader Plugin for Vite
 </a>
 </p>
 
+## 🚀 Features
+- 🦾 **Type Strong**: written in [TypeScript](https://www.typescriptlang.org/)
+- ⚡ **S3 Compatibles**: Support any S3 compatible provider (AWS, DO Spaces...)
+- ✨ **Uploads any files**: can upload any files or directory not just build folder
+
 ## 📦 Install
 
 ```bash
@@ -50,14 +55,18 @@ export default defineConfig({
 })
 ```
 
-## 🚀 Options
-- `enabled/disable`: This setting can be used to disable or enable the uploading of assets (In addition Plugin is disabled in SSR and non build run)
-- `exclude`: A Pattern to match for excluded content.
-- `include`: A Pattern to match for included content.
-- `clientConfig`: Provide keys for upload options of [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html)
-- `uploadOptions`: Provide upload options [PutObjectRequest](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectrequest.html)
-- `basePath`: Provide the namespace of uploaded files on S3
-- `directory`: Provide a directory to upload (if not supplied, will upload files from [build.outDir](https://vitejs.dev/config/build-options.html#build-outdir))
+## 👀 Options
+
+> `enabled/disable`: This setting can be used to disable or enable the uploading of assets (In addition Plugin is disabled in SSR and non build run)
+
+| Option          | Description                                                                                                   | Type                                                                                                                          | Default                                                                   |
+|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
+| `exclude`       | A Pattern to match for excluded content                                                                       | `string,RegExp,Function,Array<string,RegExp,Function>`                                                                        | `null`                                                                    |
+| `include`       | A Pattern to match for included content                                                                       | `string,RegExp,Function,Array<string,RegExp,Function>`                                                                        | `null`                                                                    |
+| `clientConfig`  | The configuration interface of S3Client class constructor that set the region, credentials and other options. | [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html)     | `required`                                                                |
+| `uploadOptions` | `PutObjectRequest` options except `Body` and `Key'                                                            | [PutObjectRequest](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectrequest.html) | `required`                                                                |
+| `basePath`      | Namespace of uploaded files on S3                                                                             | `string`                                                                                                                      | `null`                                                                    |
+| `directory`     | Directory to upload                                                                                           | `string`                                                                                                                      | [build.outDir](https://vitejs.dev/config/build-options.html#build-outdir) |
 
 #### Advanced `include` and `exclude rules`
 
