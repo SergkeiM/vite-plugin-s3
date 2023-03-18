@@ -15,6 +15,7 @@ import {
   UPLOAD_IGNORES,
   addSeperatorToPath,
   getDirectoryFilesRecursive,
+  testRule,
 } from './helpers'
 
 export default class Uploader {
@@ -69,8 +70,8 @@ export default class Uploader {
   isIncludeAndNotExclude(file: string): boolean {
     const { include, exclude } = this.options
 
-    const isInclude = include ? new RegExp(include).test(file) : true
-    const isExclude = exclude ? new RegExp(exclude).test(file) : false
+    const isInclude = include ? testRule(include, file) : true
+    const isExclude = exclude ? testRule(exclude, file) : false
 
     return isInclude && !isExclude
   }

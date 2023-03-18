@@ -9,11 +9,11 @@ export interface Options {
   /**
    * A Pattern to match for excluded content.
    */
-  exclude?: string | null
+  exclude?: string | RegExp | Function | Array<string | RegExp | Function> | null
   /**
    * A Pattern to match for included content.
    */
-  include?: string | null
+  include?: string | RegExp | Function | Array<string | RegExp | Function> | null
   /**
    * Provide the namespace of uploaded files on S3
    */
