@@ -18,7 +18,7 @@ S3 compatible file uploader Plugin for Vite
 
 ## 🚀 Features
 - 🦾 **Type Strong**: written in [TypeScript](https://www.typescriptlang.org/)
-- ⚡ **S3 Compatibles**: Support any S3 compatible provider (AWS, DO Spaces...)
+- ⚡ **S3 Compatible**: Support any S3 compatible provider (AWS, DO Spaces...)
 - ✨ **Uploads any files**: can upload any files or directory not just build folder
 
 ## 📦 Install
@@ -61,9 +61,9 @@ export default defineConfig({
 
 | Option          | Description                                                                                                   | Type                                                                                                                          | Default                                                                   |
 |:----------------|:--------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
-| `exclude`       | A Pattern to match for excluded content                                                                       | `string,RegExp,Function,Array<string,RegExp,Function>`                                                                        | `null`                                                                    |
-| `include`       | A Pattern to match for included content                                                                       | `string,RegExp,Function,Array<string,RegExp,Function>`                                                                        | `null`                                                                    |
-| `clientConfig`  | The configuration interface of S3Client class constructor that set the region, credentials and other options. | [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html)     | `required`                                                                |
+| `exclude`       | A Pattern to match for excluded content                                                                       | `string,RegExp,Function,Array`                                                                        | `null`                                                                    |
+| `include`       | A Pattern to match for included content                                                                       | `string,RegExp,Function,Array`                                                                        | `null`                                                                    |
+| `clientConfig`  | The configuration interface of S3Client class constructor | [S3ClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/s3clientconfig.html)     | `required`                                                                |
 | `uploadOptions` | `PutObjectRequest` options except `Body` and `Key'                                                            | [PutObjectRequest](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectrequest.html) | `required`                                                                |
 | `basePath`      | Namespace of uploaded files on S3                                                                             | `string`                                                                                                                      | `null`                                                                    |
 | `directory`     | Directory to upload                                                                                           | `string`                                                                                                                      | [build.outDir](https://vitejs.dev/config/build-options.html#build-outdir) |
