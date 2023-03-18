@@ -6,6 +6,11 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- More options for Include/Exclude
+- Added docs for advanced usage of Include/Exclude
+- Added reference to [MikaAK/s3-plugin-webpack](https://github.com/MikaAK/s3-plugin-webpack)
+
 ## 1.2.4 - 2023-03-17
 ### Changed
 - Export name (kept previous to avoid BC)

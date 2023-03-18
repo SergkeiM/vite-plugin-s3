@@ -1,7 +1,9 @@
 import path from 'node:path'
 import readDir from 'recursive-readdir'
+import isRegExp from 'lodash/isRegExp'
+import isString from 'lodash/isString'
 
-import type { File } from './types'
+import type { File, Options } from './types'
 
 export const S3_PATH_SEP = '/'
 export const PATH_SEP: string = path.sep
@@ -45,4 +47,17 @@ export const getDirectoryFilesRecursive = (dir: string, ignores: ReadonlyArray<s
         resolve(translatePathFromFiles(dir, files))
     })
   })
+}
+
+export const testRule = (rule: Options['include'] | Options['exclude'], subject: string): boolean => {
+  if (isRegExp(rule))
+    return rule.test(subject)
+  else if (typeof rule === 'function')
+    return !!rule(subject)
+  else if (Array.isArray(rule))
+    return rule.every((condition: Options['include']) => testRule(condition, subject))
+  else if (isString(rule))
+    return new RegExp(rule).test(subject)
+  else
+    throw new Error('Invalid include / exclude rule')
 }
