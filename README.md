@@ -96,6 +96,30 @@ export default defineConfig({
 })
 ```
 
+## 💧 [DigitalOcean](https://m.do.co/c/1b7cfb2128b0) Spaces Object Storage example
+
+
+```javascript
+import { defineConfig } from 'vite'
+import { ViteS3 } from '@froxz/vite-plugin-s3'
+export default defineConfig({
+    plugins: [
+        new ViteS3(!!process.env.UPLOAD_ENABLED, {
+            clientConfig: {
+                credentials: {
+                    accessKeyId: process.env.DO_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.DO_SECRET_ACCESS_KEY,
+                },
+                endpoint: 'https://fra1.digitaloceanspaces.com',
+                region: 'fra1'
+            },
+            uploadOptions: {
+                Bucket: 'my-bucket'
+            }
+        })
+    ]
+})
+```
 
 ## 🙏 Thanks
 
@@ -104,3 +128,5 @@ Thanks to [MikaAK](https://github.com/MikaAK) for [s3-plugin-webpack](https://gi
 ## 📄 License
 
 MIT License [Froxz](LICENSE)
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=1b7cfb2128b0&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
