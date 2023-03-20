@@ -1,6 +1,6 @@
 {
   "name": "@froxz/vite-plugin-s3",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Allows you to upload files to AWS S3 or any other S3 compatible provider",
   "author": {
     "name": "Sergkei Melingk",
