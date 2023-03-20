@@ -11,8 +11,8 @@ S3 compatible file uploader Plugin for Vite
     <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@froxz/vite-plugin-s3?color=476582&label=">
 </a>
 <br>
-<a href="https://github.com/Froxz/vite-plugin-s3" target="__blank">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/Froxz/vite-plugin-s3?style=social">
+<a href="https://github.com/SergkeiM/vite-plugin-s3" target="__blank">
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/SergkeiM/vite-plugin-s3?style=social">
 </a>
 </p>
 
@@ -137,6 +137,6 @@ Thanks to [MikaAK](https://github.com/MikaAK) for [s3-plugin-webpack](https://gi
 
 ## 📄 License
 
-MIT License [Froxz](LICENSE)
+MIT License [Sergkei Melingk](LICENSE)
 
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=1b7cfb2128b0&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
