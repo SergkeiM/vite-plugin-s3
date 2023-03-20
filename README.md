@@ -16,7 +16,6 @@ S3 compatible file uploader Plugin for Vite
 </a>
 </p>
 
-[![Rate this package](https://badges.openbase.com/js/rating/@froxz/vite-plugin-s3.svg?style=openbase&token=+2YA8n/SOL3DiSFWWLusfYyOwyXAeNo24ynF9UtjTPY=)](https://openbase.com/js/@froxz/vite-plugin-s3?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 ## 🚀 Features
 - 🦾 **Type Strong**: written in [TypeScript](https://www.typescriptlang.org/)
