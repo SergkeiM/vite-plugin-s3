@@ -4,11 +4,11 @@ S3 compatible file uploader Plugin for Vite
 </p>
 
 <p align='center'>
-<a href='https://www.npmjs.com/package/@sergkeim/vite-plugin-s3' target="__blank">
-<img src='https://img.shields.io/npm/v/@sergkeim/vite-plugin-s3?color=33A6B8&label=' alt="NPM version">
+<a href='https://www.npmjs.com/package/@froxz/vite-plugin-s3' target="__blank">
+<img src='https://img.shields.io/npm/v/@froxz/vite-plugin-s3?color=33A6B8&label=' alt="NPM version">
 </a>
-<a href="https://www.npmjs.com/package/@sergkeim/vite-plugin-s3" target="__blank">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@sergkeim/vite-plugin-s3?color=476582&label=">
+<a href="https://www.npmjs.com/package/@froxz/vite-plugin-s3" target="__blank">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@froxz/vite-plugin-s3?color=476582&label=">
 </a>
 <br>
 <a href="https://github.com/SergkeiM/vite-plugin-s3" target="__blank">
@@ -25,7 +25,7 @@ S3 compatible file uploader Plugin for Vite
 ## 📦 Install
 
 ```bash
-$ npm i @sergkeim/vite-plugin-s3
+$ npm i @froxz/vite-plugin-s3
 ```
 ## 🦄 Usage
 
@@ -35,7 +35,7 @@ Add `vite-plugin-s3` plugin to `vite.config.js / vite.config.ts` and configure i
 
 ```ts
 import { defineConfig } from 'vite'
-import { ViteS3 } from '@sergkeim/vite-plugin-s3'
+import { ViteS3 } from '@froxz/vite-plugin-s3'
 
 export default defineConfig({
   plugins: [
@@ -75,7 +75,7 @@ export default defineConfig({
 
 ```javascript
 import { defineConfig } from 'vite'
-import { ViteS3 } from '@sergkeim/vite-plugin-s3'
+import { ViteS3 } from '@froxz/vite-plugin-s3'
 import isGitIgnored from 'is-gitignored'
 // Up to you how to handle this
 var isPathOkToUpload = function(path) {
@@ -111,7 +111,7 @@ export default defineConfig({
 
 ```javascript
 import { defineConfig } from 'vite'
-import { ViteS3 } from '@sergkeim/vite-plugin-s3'
+import { ViteS3 } from '@froxz/vite-plugin-s3'
 export default defineConfig({
     plugins: [
         new ViteS3(!!process.env.UPLOAD_ENABLED, {
