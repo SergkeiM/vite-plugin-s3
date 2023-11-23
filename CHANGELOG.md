@@ -11,6 +11,8 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - Bump `@types/recursive-readdir` from `2.2.1` to `2.2.4`
 - Bump `@types/lodash` from `4.14.191` to `4.14.202`
 - Bump `@aws-sdk/client-s3` from `3.290.0` to `3.456.0`
+- Bump `tsup` from `6.6.3` to `8.0.1`
+- Bump `typescript` from `4.9.5` to `5.3.2`
 
 ## 1.4.0 - 2023-11-23
 ### Changed
