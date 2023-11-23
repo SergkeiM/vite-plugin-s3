@@ -7,6 +7,7 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Changed
 - Upgraded `esno` to version `4`
+- Upgraded `@types/node` to version `20.9.4`
 
 ## 1.4.0 - 2023-11-23
 ### Changed
