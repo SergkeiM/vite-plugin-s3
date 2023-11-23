@@ -6,8 +6,9 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Changed
-- Upgraded `esno` to version `4`
-- Upgraded `@types/node` to version `20.9.4`
+- Bump `esno` from `0.16.3` to `4.0.0`
+- Bump `@types/node` from `18.15.3` to `20.9.4`
+- bump `@types/recursive-readdir` from `2.2.1` to `2.2.4`
 
 ## 1.4.0 - 2023-11-23
 ### Changed
