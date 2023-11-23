@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
+## 1.4.1 - 2023-11-23
 ### Changed
 - Bump `esno` from `0.16.3` to `4.0.0`
 - Bump `@types/node` from `18.15.3` to `20.9.4`
