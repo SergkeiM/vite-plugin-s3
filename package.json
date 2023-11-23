@@ -63,7 +63,7 @@
     "@types/node": "^18.15.3",
     "@types/recursive-readdir": "^2.2.1",
     "eslint": "^8.36.0",
-    "esno": "^0.16.3",
+    "esno": "^4.0.0",
     "kolorist": "^1.7.0",
     "lodash": "^4.17.21",
     "tsup": "^6.6.3",
