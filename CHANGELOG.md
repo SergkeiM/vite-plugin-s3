@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
+## 1.4.2 - 2023-11-28
 ### Changed
 - Bump `@types/node` from `20.9.4 ` to `20.10.0 `
 - Bump `@aws-sdk/client-s3` from `3.456.0` to `3.458.0`
