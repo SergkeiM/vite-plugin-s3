@@ -6,6 +6,8 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## 1.4.3 - 2023-12-27
+
 ## 1.4.2 - 2023-11-28
 ### Changed
 - Bump `@types/node` from `20.9.4 ` to `20.10.0 `
