@@ -6,7 +6,7 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Changed
-- Bump `@aws-sdk/client-s3` from `3.458.0` to `3.535.0`
+- Bump `@aws-sdk/client-s3` from `3.485.0` to `3.540.0`
 
 ## 1.4.3 - 2023-12-27
 
