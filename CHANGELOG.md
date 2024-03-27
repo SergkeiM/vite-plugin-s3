@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Changed
+- Bump `typescript` from `5.3.3` to `5.4.3`
 
 ## 1.4.3 - 2023-12-27
 
