@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
     "target": "es2017",
     "lib": ["ESNext", "DOM", "WebWorker"],
-    "esModuleInterop": true,
-    "strict": true,
-    "strictNullChecks": true,
+    "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "noUnusedLocals": true
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "dist",

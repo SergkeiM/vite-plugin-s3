@@ -37,7 +37,7 @@ export function translatePathFromFiles(dir: string, files: string[]): File[] {
   }))
 }
 
-export const getDirectoryFilesRecursive = (dir: string, ignores: ReadonlyArray<string> = []): Promise<File[]> => {
+export function getDirectoryFilesRecursive(dir: string, ignores: ReadonlyArray<string> = []): Promise<File[]> {
   return new Promise((resolve, reject) => {
     readDir(dir, ignores, (error: Error, files: string[]) => {
       if (error)
@@ -49,7 +49,7 @@ export const getDirectoryFilesRecursive = (dir: string, ignores: ReadonlyArray<s
   })
 }
 
-export const testRule = (rule: Options['include'] | Options['exclude'], subject: string): boolean => {
+export function testRule(rule: Options['include'] | Options['exclude'], subject: string): boolean {
   if (isRegExp(rule))
     return rule.test(subject)
   else if (typeof rule === 'function')
