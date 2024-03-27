@@ -11,6 +11,7 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - Bump `eslint` from `8.56.0` to `8.57.0`
 - Bump `@types/node` from `20.10.7` to `20.11.30`
 - Bump `@types/lodash` from `4.14.202` to `4.17.0`
+- Bump `typescript` from `5.3.3` to `5.4.3`
 
 ## 1.4.3 - 2023-12-27
 
