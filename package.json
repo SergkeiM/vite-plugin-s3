@@ -22,8 +22,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./*": "./*"
   },
@@ -39,8 +39,8 @@
     }
   },
   "files": [
-    "dist",
-    "*.d.ts"
+    "*.d.ts",
+    "dist"
   ],
   "scripts": {
     "lint": "eslint .",
@@ -57,12 +57,12 @@
     "recursive-readdir": "^2.2.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.4.5",
+    "@antfu/eslint-config": "^2.11.0",
     "@types/lodash": "^4.14.191",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^20.9.4",
     "@types/recursive-readdir": "^2.2.1",
-    "eslint": "^8.36.0",
+    "eslint": "^8.57.0",
     "esno": "^4.0.0",
     "kolorist": "^1.7.0",
     "lodash": "^4.17.21",
