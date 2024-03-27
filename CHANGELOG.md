@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
+## 1.5.0 - 2024-03-27
 ### Changed
 - Bump `@aws-sdk/client-s3` from `3.485.0` to `3.540.0`
 - Bump `tsup` from `8.0.1` to `8.0.2`
