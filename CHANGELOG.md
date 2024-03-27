@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Changed
+- Bump `@types/lodash` from `4.14.202` to `4.17.0`
 
 ## 1.4.3 - 2023-12-27
 
