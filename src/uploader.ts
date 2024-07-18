@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { resolve } from 'node:path'
 import type { ResolvedConfig } from 'vite'
 import type { PutObjectCommandOutput } from '@aws-sdk/client-s3'
 
@@ -31,7 +32,7 @@ export default class Uploader {
 
     this.client = new S3(this.options.clientConfig)
 
-    this.directory = this.options.directory ? this.options.directory : `${this.vite.root}/${this.vite.build.outDir}`
+    this.directory = resolve(this.vite.root, (this.options.directory ? this.options.directory : this.vite.build.outDir))
   }
 
   uploadFile(fileName: string, file: string): Promise<PutObjectCommandOutput> {
