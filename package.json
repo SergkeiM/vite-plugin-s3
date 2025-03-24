@@ -62,7 +62,7 @@
     "@types/mime-types": "^2.1.1",
     "@types/node": "^22.5.4",
     "@types/recursive-readdir": "^2.2.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.23.0",
     "esno": "^4.0.0",
     "kolorist": "^1.7.0",
     "lodash": "^4.17.21",
