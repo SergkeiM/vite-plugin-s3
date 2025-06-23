@@ -60,7 +60,7 @@
     "@antfu/eslint-config": "^2.11.0",
     "@types/lodash": "^4.14.191",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^22.5.4",
+    "@types/node": "^24.0.3",
     "@types/recursive-readdir": "^2.2.1",
     "eslint": "^8.57.0",
     "esno": "^4.0.0",
