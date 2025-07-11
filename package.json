@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.2",
-    "@types/mime-types": "^2.1.1",
+    "@types/mime-types": "^3.0.1",
     "@types/node": "^24.0.10",
     "@types/recursive-readdir": "^2.2.1",
     "es-toolkit": "^1.39.7",
