@@ -1,7 +1,7 @@
 {
   "name": "@froxz/vite-plugin-s3",
   "type": "module",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Allows you to upload files to AWS S3 or any other S3 compatible provider",
   "author": {
     "name": "Sergkei Melingk",
@@ -42,7 +42,8 @@
     "lint:fix": "eslint . --fix",
     "clean": "rm -rf dist",
     "dev": "tsup --watch",
-    "build": "npm run clean && tsup"
+    "build": "npm run clean && tsup",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "vite": "^3.1.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
