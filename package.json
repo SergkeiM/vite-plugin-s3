@@ -1,5 +1,6 @@
 {
   "name": "@froxz/vite-plugin-s3",
+  "type": "module",
   "version": "1.7.1",
   "description": "Allows you to upload files to AWS S3 or any other S3 compatible provider",
   "author": {
@@ -22,31 +23,26 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./*": "./*"
+      "import": "./dist/index.js"
+    }
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "index.d.ts",
+  "main": "./dist/index.js",
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*",
-        "./*"
+      ".": [
+        "./dist/index.d.ts"
       ]
     }
   },
   "files": [
-    "*.d.ts",
     "dist"
   ],
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "dev": "esno scripts/dev.ts",
-    "build": "esno scripts/build.ts"
+    "clean": "rm -rf dist",
+    "dev": "tsup --watch",
+    "build": "npm run clean && tsup"
   },
   "peerDependencies": {
     "vite": "^3.1.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
@@ -58,15 +54,12 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.2",
-    "@types/lodash": "^4.14.191",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^24.0.10",
     "@types/recursive-readdir": "^2.2.1",
-    "eslint": "^8.57.0",
-    "esno": "^4.0.0",
+    "es-toolkit": "^1.39.7",
     "kolorist": "^1.7.0",
-    "lodash": "^4.17.21",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.2"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   }
 }

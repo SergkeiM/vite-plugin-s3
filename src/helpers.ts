@@ -1,9 +1,8 @@
+import type { ContentPattern, File } from '~/types'
 import path from 'node:path'
-import readDir from 'recursive-readdir'
-import isRegExp from 'lodash/isRegExp'
-import isString from 'lodash/isString'
+import { isRegExp, isString } from 'es-toolkit'
 
-import type { File, Options } from './types'
+import readDir from 'recursive-readdir'
 
 export const S3_PATH_SEP = '/'
 export const PATH_SEP: string = path.sep
@@ -49,13 +48,13 @@ export function getDirectoryFilesRecursive(dir: string, ignores: ReadonlyArray<s
   })
 }
 
-export function testRule(rule: Options['include'] | Options['exclude'], subject: string): boolean {
+export function testRule(rule: ContentPattern, subject: string): boolean {
   if (isRegExp(rule))
     return rule.test(subject)
   else if (typeof rule === 'function')
     return !!rule(subject)
   else if (Array.isArray(rule))
-    return rule.every((condition: Options['include']) => testRule(condition, subject))
+    return rule.every((condition: ContentPattern) => testRule(condition, subject))
   else if (isString(rule))
     return new RegExp(rule).test(subject)
   else

@@ -7,6 +7,13 @@ and this project sticks to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - Added `Vite 7` support
+### Changed
+- Replaced `lodash` with `es-toolkit`
+- Bump `eslint` from `8.57.0` to `8.57.1`
+- Bump `tsup` from `8.0.1` to `8.5.0`
+- Bump `typescript` from `5.3.2` to `5.8.3`
+### Removed
+- `esno`
 
 ## 1.7.1 - 2025-03-24
 
