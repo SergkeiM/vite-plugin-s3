@@ -1,4 +1,6 @@
 name: Linting
+permissions:
+  contents: read
 on: [pull_request]
 jobs:
   lint:
