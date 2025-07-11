@@ -2,6 +2,8 @@ import type { PutObjectRequest as PutObject, S3ClientConfig } from '@aws-sdk/cli
 
 declare type PutObjectRequest = Omit<PutObject, 'Body' | 'Key'>
 
+export type Function = (subject: string) => boolean
+
 export type ContentPattern = string | RegExp | Function | Array<string | RegExp | Function> | null
 /**
  * Plugin options.
@@ -41,4 +43,4 @@ export interface File {
   name: string
 }
 
-export { S3ClientConfig, PutObjectRequest }
+export { PutObjectRequest, S3ClientConfig }

@@ -1,23 +1,23 @@
-import fs from 'node:fs'
-import { resolve } from 'node:path'
-import type { ResolvedConfig } from 'vite'
 import type { PutObjectCommandOutput } from '@aws-sdk/client-s3'
+import type { ResolvedConfig } from 'vite'
+import type { File, Options } from '~/types'
+import fs from 'node:fs'
 
+import { resolve } from 'node:path'
 import { S3 } from '@aws-sdk/client-s3'
-import { lookup } from 'mime-types'
 
 import { mapValues } from 'es-toolkit'
-import type { File, Options } from '~/types'
-
-import { logResult } from '~/log'
+import { lookup } from 'mime-types'
 
 import {
-  DEFAULT_UPLOAD_OPTIONS,
-  UPLOAD_IGNORES,
   addSeperatorToPath,
+  DEFAULT_UPLOAD_OPTIONS,
   getDirectoryFilesRecursive,
   testRule,
+  UPLOAD_IGNORES,
 } from '~/helpers'
+
+import { logResult } from '~/log'
 
 export default class Uploader {
   options: Options
