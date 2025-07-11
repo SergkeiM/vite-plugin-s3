@@ -5,7 +5,7 @@ import { cyan, dim } from 'kolorist'
 import type { ResolvedConfig } from 'vite'
 
 import { version } from '../package.json'
-import type { File } from './types'
+import type { File } from '~/types'
 
 export function logResult(files: File[], vite: ResolvedConfig) {
   const { root, logLevel = 'info' } = vite

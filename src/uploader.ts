@@ -6,10 +6,10 @@ import type { PutObjectCommandOutput } from '@aws-sdk/client-s3'
 import { S3 } from '@aws-sdk/client-s3'
 import { lookup } from 'mime-types'
 
-import mapValues from 'lodash/mapValues'
-import type { File, Options } from './types'
+import { mapValues } from 'es-toolkit'
+import type { File, Options } from '~/types'
 
-import { logResult } from './log'
+import { logResult } from '~/log'
 
 import {
   DEFAULT_UPLOAD_OPTIONS,
@@ -17,7 +17,7 @@ import {
   addSeperatorToPath,
   getDirectoryFilesRecursive,
   testRule,
-} from './helpers'
+} from '~/helpers'
 
 export default class Uploader {
   options: Options

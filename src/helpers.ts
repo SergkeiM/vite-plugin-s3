@@ -1,9 +1,8 @@
 import path from 'node:path'
 import readDir from 'recursive-readdir'
-import isRegExp from 'lodash/isRegExp'
-import isString from 'lodash/isString'
+import { isRegExp, isString } from 'es-toolkit'
 
-import type { File, Options } from './types'
+import type { File, Options } from '~/types'
 
 export const S3_PATH_SEP = '/'
 export const PATH_SEP: string = path.sep

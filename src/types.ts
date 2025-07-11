@@ -2,6 +2,7 @@ import type { PutObjectRequest as PutObject, S3ClientConfig } from '@aws-sdk/cli
 
 declare type PutObjectRequest = Omit<PutObject, 'Body' | 'Key'>
 
+export type ContentPattern = string | RegExp | Function | Array<string | RegExp | Function> | null
 /**
  * Plugin options.
  */
@@ -9,11 +10,11 @@ export interface Options {
   /**
    * A Pattern to match for excluded content.
    */
-  exclude?: string | RegExp | Function | Array<string | RegExp | Function> | null
+  exclude?: ContentPattern
   /**
    * A Pattern to match for included content.
    */
-  include?: string | RegExp | Function | Array<string | RegExp | Function> | null
+  include?: ContentPattern
   /**
    * Provide the namespace of uploaded files on S3
    */
