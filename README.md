@@ -7,6 +7,8 @@
   <a href="https://www.npmjs.com/package/@froxz/vite-plugin-s3"><img src="https://img.shields.io/npm/dm/@froxz/vite-plugin-s3.svg?style=flat&colorA=18181B&colorB=33A6B8" alt="Downloads"></a>
   <a href="https://github.com/SergkeiM/vite-plugin-s3/blob/main/LICENSE"><img src="https://img.shields.io/github/license/SergkeiM/vite-plugin-s3.svg?style=flat&colorA=18181B&colorB=33A6B8" alt="License"></a>
   <a href="https://securityscorecards.dev/"><img src="https://img.shields.io/ossf-scorecard/github.com/SergkeiM/vite-plugin-s3?label=openssf+scorecard&style=flat&colorA=18181B&colorB=33A6B8" alt="vite-plugin-s3 openssf scorecard score"></a>
+  <a href="https://github.com/SergkeiM/vite-plugin-s3"><img src="https://img.shields.io/github/stars/SergkeiM/vite-plugin-s3?label=stars&style=flat&colorA=18181B&colorB=33A6B8" alt="vite-plugin-s3 GitHub Stars"></a>
+  
 </p>
 
 S3 compatible file uploader Plugin for Vite
