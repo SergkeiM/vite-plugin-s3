@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src", "tsup.config.ts"],
+  "include": ["src", "tsup.config.ts", "tests/helpers.test.ts", "tests/uploader.test.ts"],
   "exclude": [
     "dist",
     "node_modules",
