@@ -43,7 +43,8 @@
     "clean": "rm -rf dist",
     "dev": "tsup --watch",
     "build": "npm run clean && tsup",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "vitest"
   },
   "peerDependencies": {
     "vite": "^3.1.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
@@ -58,9 +59,11 @@
     "@types/mime-types": "^3.0.1",
     "@types/node": "^24.0.10",
     "@types/recursive-readdir": "^2.2.1",
+    "@vitest/ui": "^3.2.4",
     "es-toolkit": "^1.39.7",
     "kolorist": "^1.7.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }

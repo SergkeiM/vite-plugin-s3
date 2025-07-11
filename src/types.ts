@@ -4,7 +4,9 @@ declare type PutObjectRequest = Omit<PutObject, 'Body' | 'Key'>
 
 export type Function = (subject: string) => boolean
 
-export type ContentPattern = string | RegExp | Function | Array<string | RegExp | Function> | null
+export type Pattern = string | RegExp | Function
+
+export type ContentPattern = Pattern | Pattern[] | null
 /**
  * Plugin options.
  */
