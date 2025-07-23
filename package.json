@@ -51,6 +51,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.0.0",
+    "es-toolkit": "^1.39.7",
+    "kolorist": "^1.7.0",
     "mime-types": "^3.0.1",
     "recursive-readdir": "^2.2.3"
   },
@@ -60,8 +62,6 @@
     "@types/node": "^24.0.10",
     "@types/recursive-readdir": "^2.2.1",
     "@vitest/ui": "^3.2.4",
-    "es-toolkit": "^1.39.7",
-    "kolorist": "^1.7.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
