@@ -35,6 +35,10 @@ export interface Options {
    * By default: `build.outDir`.
    */
   directory?: string | null
+  /**
+   * Disable parallel uploads if timouts or other issues occur.
+   */
+  disableParallelUploads?: boolean
 }
 
 /**
