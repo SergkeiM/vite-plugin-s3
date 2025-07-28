@@ -36,9 +36,9 @@ export interface Options {
    */
   directory?: string | null
   /**
-   * Disable parallel uploads if timouts or other issues occur.
+   * If true, files will be uploaded sequentially.
    */
-  disableParallelUploads?: boolean
+  sequentialUploads?: boolean
 }
 
 /**

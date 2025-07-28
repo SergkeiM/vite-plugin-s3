@@ -59,7 +59,7 @@ export default class Uploader {
   }
 
   async uploadFiles(files: File[]): Promise<PutObjectCommandOutput[]> {
-    if (this.options.disableParallelUploads) {
+    if (this.options.sequentialUploads === true) {
       const uploadResponses: PutObjectCommandOutput[] = []
       for (const file of files) {
         const response = await this.uploadFile(file.name, file.path)
