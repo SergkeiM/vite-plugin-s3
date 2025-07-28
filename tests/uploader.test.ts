@@ -75,4 +75,15 @@ describe('uploader', () => {
     expect(results).toHaveLength(2)
     expect(results[0]).toHaveProperty('ETag', 'mock-etag')
   })
+
+  it('should upload multiple files sequentially', async () => {
+    const files: File[] = [
+      { name: 'file1.txt', path: '/mock/file1.txt' },
+      { name: 'file2.js', path: '/mock/file2.js' },
+    ]
+    uploader.options.disableParallelUploads = true
+    const results = await uploader.uploadFiles(files)
+    expect(results).toHaveLength(2)
+    expect(results[0]).toHaveProperty('ETag', 'mock-etag')
+  })
 })

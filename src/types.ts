@@ -35,6 +35,10 @@ export interface Options {
    * By default: `build.outDir`.
    */
   directory?: string | null
+  /**
+   * If true, files will be uploaded sequentially.
+   */
+  sequentialUploads?: boolean
 }
 
 /**

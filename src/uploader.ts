@@ -59,8 +59,16 @@ export default class Uploader {
   }
 
   async uploadFiles(files: File[]): Promise<PutObjectCommandOutput[]> {
-    const uploadFiles = files.map((file: File) => this.uploadFile(file.name, file.path))
+    if (this.options.sequentialUploads === true) {
+      const uploadResponses: PutObjectCommandOutput[] = []
+      for (const file of files) {
+        const response = await this.uploadFile(file.name, file.path)
+        uploadResponses.push(response)
+      }
+      return uploadResponses
+    }
 
+    const uploadFiles = files.map((file: File) => this.uploadFile(file.name, file.path))
     return await Promise.all(uploadFiles)
   }
 
