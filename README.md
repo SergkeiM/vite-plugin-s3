@@ -65,6 +65,14 @@ export default defineConfig({
 | `basePath`      | Namespace of uploaded files on S3                                                                             | `string`                                                                                                                      | `null`                                                                    |
 | `directory`     | Directory to upload                                                                                           | `string`                                                                                                                      | [build.outDir](https://vitejs.dev/config/build-options.html#build-outdir) |
 | `sequentialUploads`     | If `true`, files will be uploaded sequentially.                                                                                           | `boolean`                                                                                                                      | `false` |
+| `cloudfront`    | CloudFront invalidation options (see below)                                                                   | `CloudFrontOptions`                                                                                                           | `undefined` |
+
+#### CloudFront Invalidation Options
+
+| Option          | Description                                                                                                   | Type                                                                                                                          | Default                                                                   |
+|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
+| `distributionId` | CloudFront distribution ID                                                                                   | `string`                                                                                                                      | `required`                                                                |
+| `clientConfig`  | Optional CloudFront client configuration. If not provided, uses the same credentials as S3                    | [CloudFrontClientConfig](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-cloudfront/interfaces/cloudfrontclientconfig.html) | Uses S3 `clientConfig` |
 
 #### Advanced `include` and `exclude rules`
 
@@ -122,6 +130,32 @@ export default defineConfig({
             },
             uploadOptions: {
                 Bucket: 'my-bucket'
+            }
+        })
+    ]
+})
+```
+
+## ☁️ CloudFront Invalidation example
+
+```javascript
+import { defineConfig } from 'vite'
+import { ViteS3 } from '@froxz/vite-plugin-s3'
+export default defineConfig({
+    plugins: [
+        ViteS3(!!process.env.UPLOAD_ENABLED, {
+            clientConfig: {
+                credentials: {
+                    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                },
+                region: 'us-east-1'
+            },
+            uploadOptions: {
+                Bucket: 'my-bucket'
+            },
+            cloudfront: {
+                distributionId: 'E1234567890ABC'
             }
         })
     ]
