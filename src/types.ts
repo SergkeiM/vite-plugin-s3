@@ -1,3 +1,4 @@
+import type { CloudFrontClientConfig } from '@aws-sdk/client-cloudfront'
 import type { PutObjectRequest as PutObject, S3ClientConfig } from '@aws-sdk/client-s3'
 
 declare type PutObjectRequest = Omit<PutObject, 'Body' | 'Key'>
@@ -7,6 +8,21 @@ export type Function = (subject: string) => boolean
 export type Pattern = string | RegExp | Function
 
 export type ContentPattern = Pattern | Pattern[] | null
+
+/**
+ * CloudFront invalidation options.
+ */
+export interface CloudFrontOptions {
+  /**
+   * CloudFront distribution ID
+   */
+  distributionId: string
+  /**
+   * Optional CloudFront client configuration. If not provided, uses the same credentials as S3.
+   */
+  clientConfig?: CloudFrontClientConfig
+}
+
 /**
  * Plugin options.
  */
@@ -39,6 +55,10 @@ export interface Options {
    * If true, files will be uploaded sequentially.
    */
   sequentialUploads?: boolean
+  /**
+   * CloudFront invalidation options. If provided, creates an invalidation after upload.
+   */
+  cloudfront?: CloudFrontOptions
 }
 
 /**
@@ -49,4 +69,4 @@ export interface File {
   name: string
 }
 
-export { PutObjectRequest, S3ClientConfig }
+export { CloudFrontClientConfig, PutObjectRequest, S3ClientConfig }

@@ -4,6 +4,7 @@ import type { File, Options } from '~/types'
 import fs from 'node:fs'
 
 import { resolve } from 'node:path'
+import { CloudFront, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront'
 import { S3 } from '@aws-sdk/client-s3'
 
 import { mapValues } from 'es-toolkit'
@@ -23,6 +24,7 @@ export default class Uploader {
   options: Options
   vite: ResolvedConfig
   client: S3
+  cloudfront?: CloudFront
   directory: string
 
   constructor(options: Options, vite: ResolvedConfig) {
@@ -31,6 +33,12 @@ export default class Uploader {
     this.vite = vite
 
     this.client = new S3(this.options.clientConfig)
+
+    if (this.options.cloudfront) {
+      this.cloudfront = new CloudFront(
+        this.options.cloudfront.clientConfig || this.options.clientConfig,
+      )
+    }
 
     this.directory = resolve(this.vite.root, (this.options.directory ? this.options.directory : this.vite.build.outDir))
   }
@@ -72,6 +80,31 @@ export default class Uploader {
     return await Promise.all(uploadFiles)
   }
 
+  async createInvalidation(files: File[]): Promise<void> {
+    if (!this.cloudfront || !this.options.cloudfront)
+      return
+
+    const paths = files.map((file) => {
+      let path = this.options.basePath + file.name
+      if (path[0] !== '/')
+        path = `/${path}`
+      return path
+    })
+
+    const command = new CreateInvalidationCommand({
+      DistributionId: this.options.cloudfront.distributionId,
+      InvalidationBatch: {
+        CallerReference: `vite-plugin-s3-${Date.now()}`,
+        Paths: {
+          Quantity: paths.length,
+          Items: paths,
+        },
+      },
+    })
+
+    await this.cloudfront.send(command)
+  }
+
   isIgnoredFile(file: string): boolean {
     return UPLOAD_IGNORES.some(ignore => new RegExp(ignore).test(file))
   }
@@ -103,6 +136,8 @@ export default class Uploader {
     const files = this.filterAllowedFiles(allFiles)
 
     await this.uploadFiles(files)
+
+    await this.createInvalidation(files)
 
     logResult(files, this.vite)
   }
