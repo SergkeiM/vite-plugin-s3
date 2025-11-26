@@ -16,6 +16,13 @@ vi.mock('@aws-sdk/client-s3', () => ({
   })),
 }))
 
+vi.mock('@aws-sdk/client-cloudfront', () => ({
+  CloudFront: vi.fn().mockImplementation(() => ({
+    send: vi.fn(() => Promise.resolve({ Id: 'mock-invalidation-id' })),
+  })),
+  CreateInvalidationCommand: vi.fn(),
+}))
+
 const mockOptions: Options = {
   clientConfig: {},
   basePath: 'base/',
@@ -85,5 +92,53 @@ describe('uploader', () => {
     const results = await uploader.uploadFiles(files)
     expect(results).toHaveLength(2)
     expect(results[0]).toHaveProperty('ETag', 'mock-etag')
+  })
+
+  it('should initialize CloudFront client when cloudfront option is provided', () => {
+    const optionsWithCloudFront: Options = {
+      ...mockOptions,
+      cloudfront: { distributionId: 'E1234567890ABC' },
+    }
+    const uploaderWithCF = new Uploader(optionsWithCloudFront, mockVite)
+    expect(uploaderWithCF.cloudfront).toBeDefined()
+  })
+
+  it('should not initialize CloudFront client when cloudfront option is not provided', () => {
+    expect(uploader.cloudfront).toBeUndefined()
+  })
+
+  it('should create invalidation for uploaded files', async () => {
+    const { CreateInvalidationCommand } = await import('@aws-sdk/client-cloudfront')
+    const mockSend = vi.fn(() => Promise.resolve({ Id: 'mock-invalidation-id' }))
+    const optionsWithCloudFront: Options = {
+      ...mockOptions,
+      cloudfront: { distributionId: 'E1234567890ABC' },
+    }
+    const uploaderWithCF = new Uploader(optionsWithCloudFront, mockVite)
+    uploaderWithCF.cloudfront = { send: mockSend } as any
+
+    const files: File[] = [
+      { name: 'file1.txt', path: '/mock/file1.txt' },
+      { name: 'file2.js', path: '/mock/file2.js' },
+    ]
+
+    await uploaderWithCF.createInvalidation(files)
+
+    expect(CreateInvalidationCommand).toHaveBeenCalledWith({
+      DistributionId: 'E1234567890ABC',
+      InvalidationBatch: {
+        CallerReference: expect.stringContaining('vite-plugin-s3-'),
+        Paths: {
+          Quantity: 2,
+          Items: ['/base/file1.txt', '/base/file2.js'],
+        },
+      },
+    })
+    expect(mockSend).toHaveBeenCalled()
+  })
+
+  it('should not create invalidation when cloudfront is not configured', async () => {
+    const files: File[] = [{ name: 'file.txt', path: '/mock/file.txt' }]
+    await expect(uploader.createInvalidation(files)).resolves.toBeUndefined()
   })
 })
