@@ -59,7 +59,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.0.0",
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^24.0.10",
+    "@types/node": "^25.9.1",
     "@types/recursive-readdir": "^2.2.1",
     "@vitest/ui": "^3.2.4",
     "tsup": "^8.5.0",
