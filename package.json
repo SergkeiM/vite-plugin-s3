@@ -61,9 +61,9 @@
     "@types/mime-types": "^3.0.1",
     "@types/node": "^25.9.1",
     "@types/recursive-readdir": "^2.2.1",
-    "@vitest/ui": "^3.2.4",
+    "@vitest/ui": "^4.1.8",
     "tsdown": "^0.22.1",
     "typescript": "^6.0.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.1.8"
   }
 }
