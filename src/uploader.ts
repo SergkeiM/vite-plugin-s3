@@ -1,6 +1,6 @@
 import type { PutObjectCommandOutput } from '@aws-sdk/client-s3'
 import type { ResolvedConfig } from 'vite'
-import type { File, Options } from '~/types'
+import type { File, Options } from './types'
 import fs from 'node:fs'
 
 import { resolve } from 'node:path'
@@ -15,9 +15,9 @@ import {
   getDirectoryFilesRecursive,
   testRule,
   UPLOAD_IGNORES,
-} from '~/helpers'
+} from './helpers'
 
-import { logResult } from '~/log'
+import { logResult } from './log'
 
 export default class Uploader {
   options: Options

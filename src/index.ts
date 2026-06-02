@@ -1,8 +1,8 @@
 import type { ConfigEnv, Plugin, ResolvedConfig, UserConfig } from 'vite'
-import type { Options, PutObjectRequest, S3ClientConfig } from '~/types'
-import { createContext } from '~/context'
+import type { Options, PutObjectRequest, S3ClientConfig } from './types'
+import { createContext } from './context'
 
-import Uploader from '~/uploader'
+import Uploader from './uploader'
 
 export function ViteS3(enabled: boolean, userOptions: Options): Plugin {
   const options: Options = createContext(userOptions)
