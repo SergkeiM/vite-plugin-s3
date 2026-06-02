@@ -11,9 +11,11 @@ vi.mock('node:fs', () => ({
 }))
 
 vi.mock('@aws-sdk/client-s3', () => ({
-  S3: vi.fn().mockImplementation(() => ({
-    putObject: vi.fn(() => Promise.resolve({ ETag: 'mock-etag' })),
-  })),
+  S3: vi.fn(function () {
+    return {
+      putObject: vi.fn(() => Promise.resolve({ ETag: 'mock-etag' })),
+    }
+  }),
 }))
 
 const mockOptions: Options = {
