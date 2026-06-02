@@ -1,6 +1,8 @@
-[![vite-plugin-s3 banner](./.github/assets/banner.svg)](https://github.com/SergkeiM/vite-plugin-s3)
-
 # vite-plugin-s3
+
+S3 compatible file uploader Plugin for Vite
+
+![vite-plugin-s3 banner](https://repository-images.githubusercontent.com/613344824/a12f9e1b-eea0-48f4-b06a-d77978740134)
 
 <p>
   <a href="https://www.npmjs.com/package/@froxz/vite-plugin-s3"><img src="https://img.shields.io/npm/v/@froxz/vite-plugin-s3.svg?style=flat&colorA=18181B&colorB=33A6B8" alt="Version"></a>
@@ -10,8 +12,6 @@
   <a href="https://github.com/SergkeiM/vite-plugin-s3"><img src="https://img.shields.io/github/stars/SergkeiM/vite-plugin-s3?label=stars&style=flat&colorA=18181B&colorB=33A6B8" alt="vite-plugin-s3 GitHub Stars"></a>
   
 </p>
-
-S3 compatible file uploader Plugin for Vite
 
 ## 🚀 Features
 - 🦾 **Type Strong**: written in [TypeScript](https://www.typescriptlang.org/)
