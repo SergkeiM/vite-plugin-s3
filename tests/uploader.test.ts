@@ -1,5 +1,5 @@
 import type { ResolvedConfig } from 'vite'
-import type { File, Options } from '~/types'
+import type { File, Options } from '../src/types'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import Uploader from '../src/uploader'
 

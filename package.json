@@ -41,8 +41,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "clean": "rm -rf dist",
-    "dev": "tsup --watch",
-    "build": "npm run clean && tsup",
+    "dev": "tsdown --watch",
+    "build": "npm run clean && tsdown",
     "prepublishOnly": "npm run build",
     "test": "vitest"
   },
@@ -62,8 +62,8 @@
     "@types/node": "^25.9.1",
     "@types/recursive-readdir": "^2.2.1",
     "@vitest/ui": "^3.2.4",
-    "tsup": "^8.5.0",
-    "typescript": "^5.8.3",
+    "tsdown": "^0.22.1",
+    "typescript": "^6.0.3",
     "vitest": "^3.2.4"
   }
 }

@@ -1,4 +1,4 @@
-import type { ContentPattern, File } from '~/types'
+import type { ContentPattern, File } from './types'
 import path from 'node:path'
 import { isRegExp, isString } from 'es-toolkit'
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import type { ResolvedConfig } from 'vite'
-import type { File } from '~/types'
+import type { File } from './types'
 
 import { relative } from 'node:path'
 
