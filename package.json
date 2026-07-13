@@ -71,7 +71,7 @@
     "@types/recursive-readdir": "^2.2.1",
     "@vitest/ui": "^4.1.8",
     "tsdown": "^0.22.1",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.8"
   }
 }
